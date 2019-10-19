@@ -1,9 +1,14 @@
-# AWS SA assessment - AWS Fundamentals
+# SA assessment - AWS Fundamentals
+ 
+This repository contains artefacts which help in building the infratructure required to complete the SA assessment.
 
-Stage 1: Building the EC2 web server and Elastic Load Balancer.
+The linux infrastructure has been built using terraform. 
 
-| Requirement        | Status           | Comments  |
-| ------------- |:-------------:| -----:|
-| The instances should be of type t2.micro      | No | - |
-| Linux instance should reside in ap-southeast-1/ap-southeast-1a  | No      |   - |
-| Windows instance should reside in ap-southeast-1/ap-southeast-1b  | No      |   - |
+This includes 
+1. Provisioning ec2 instances, 
+2. Provisioning ebs and attaching it using user-data 
+3. Installing apache via user-data
+4. Making changes to ensure that the index.html is served as requested
+5. Ensuring security groups allow appropriate access - ssh & http
+6. Provisioning elb with requested configuration
+7. 
