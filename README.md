@@ -11,4 +11,5 @@ This includes
 4. Making changes to ensure that the index.html is served as requested
 5. Ensuring security groups allow appropriate access - ssh & http
 6. Provisioning elb with requested configuration
-7. 
+
+The windows infrastructure has been provisioned using console. No automation. 
