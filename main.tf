@@ -67,12 +67,6 @@ resource "aws_subnet" "ex1v4_public_subnet2" {
   }
 }
 
-
-# 1
-# Create a linux ec2 instance of type t2.micro in ap-southeast-1 / ap-southeast-1a
-# With apache, should start automatically on restart on port 80
-# filesystem should be mounted automatically on reboot
-# apache should serve page "index.html" from the ebs volume
 resource "aws_security_group" "ex1v4_sg" {
   name        = "ex1v4_sg"
   description = "ex1v4_sg"
@@ -162,24 +156,6 @@ resource "aws_volume_attachment" "ex1v4_volattachment" {
   instance_id = "${aws_instance.ex1v4_linuxinstance1.id}"
 }
 
-
-
-# Create a windows ec2 instance of type t2.micro in ap-southeast-1 / ap-southeast-1b
-# with IIS - hould start automatically on restart on port 80
-# filesystem should be mounted automatically on reboot
-# apache should serve page "index.html" from the ebs volume
-
-
-# Create a iGiB ebs volume with 1 partition and valid filesystem
-
-
-# Attach the ebs volume above to windows ec2 instance
-
-
-# Create an elb in singapore region
-# should accept connections on port 80
-# •	The Healthy Threshold for the ELB to be set to 2
-# Register both the above instances with this ELB & load balance the requests
 resource "aws_elb" "ex1v4_elb" {
   subnets         = ["${aws_subnet.ex1v4_public_subnet1.id}", "${aws_subnet.ex1v4_public_subnet2.id}"]
 
@@ -218,9 +194,7 @@ resource "aws_elb_attachment" "ex1v4_attachment1" {
   instance = "${aws_instance.ex1v4_linuxinstance1.id}"
 }
 
-
-
-# Create S3 bucket in singapore region and publicly readable
+# Create S3 bucket in singapore region and make it publicly readable
 resource "aws_s3_bucket" "ex1v4_public" {
   bucket        = "aws-sa-ex1v4-public"
   acl           = "public-read"
